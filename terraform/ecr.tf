@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "grpc_app" {
-  name = "${local.resource_prefix}-grpc-app"
+  name = "grpc-app"
 }
 
 resource "aws_ecr_lifecycle_policy" "grpc_app" {

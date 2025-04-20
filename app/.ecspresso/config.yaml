@@ -1,0 +1,10 @@
+region: ap-northeast-1
+cluster: grpc-cloudfront-ecs-cluster
+service: grpc-cloudfront-service
+service_definition: ecs-service-def.json
+task_definition: ecs-task-def.json
+timeout: "10m0s"
+plugins:
+  - name: tfstate
+    config:
+      url: s3://<BUCKET_NAME>/grpc-cloudfront/terraform.tfstate

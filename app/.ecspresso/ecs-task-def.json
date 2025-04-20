@@ -1,0 +1,34 @@
+{
+  "containerDefinitions": [
+    {
+      "cpu": 0,
+      "essential": true,
+      "image": "131211882692.dkr.ecr.ap-northeast-1.amazonaws.com/grpc-app:335f4d6",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/grpc-app",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "name": "app",
+      "portMappings": [
+        {
+          "appProtocol": "grpc",
+          "containerPort": 50051,
+          "hostPort": 50051,
+          "name": "app",
+          "protocol": "tcp"
+        }
+      ],
+      "readonlyRootFilesystem": false
+    }
+  ],
+  "cpu": "256",
+  "executionRoleArn": "{{ tfstate `aws_iam_role.task_execution.arn` }}",
+  "family": "grpc-app",
+  "memory": "512",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"]
+}

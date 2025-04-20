@@ -25,10 +25,10 @@ resource "aws_security_group" "alb" {
   }
 
   egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
@@ -45,10 +45,10 @@ resource "aws_lb_listener" "grpc" {
 }
 
 resource "aws_lb_target_group" "grpc_app" {
-  name                 = "${local.resource_prefix}-tg-grpc-app"
-  target_type          = "ip"
-  port                 = 50051
-  protocol             = "HTTP"
-  protocol_version     = "GRPC"
-  vpc_id               = module.vpc.vpc_id
+  name             = "${local.resource_prefix}-tg-grpc-app"
+  target_type      = "ip"
+  port             = 50051
+  protocol         = "HTTP"
+  protocol_version = "GRPC"
+  vpc_id           = module.vpc.vpc_id
 }
